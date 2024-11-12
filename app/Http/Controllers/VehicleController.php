@@ -14,4 +14,8 @@ class VehicleController extends Controller
 
         return view('vehicles.index', compact('vcls'));
     }
+    public function create()
+    {
+        return view('vehicles.create');
+    }
 }

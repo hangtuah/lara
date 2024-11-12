@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/vehicles', [App\Http\Controllers\VehicleController::class, 'index'])->name('vehicle.index');
+Route::get('/vehicles/create', [App\Http\Controllers\VehicleController::class, 'create'])->name('vehicle.create');
