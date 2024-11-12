@@ -9,7 +9,11 @@
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="mb-4">Add New Vehicle</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Add New Vehicle</h1>
+            <!-- Back to Vehicle List Button -->
+            <a href="{{ route('vehicle.index') }}" class="btn btn-secondary">Back to Vehicle List</a>
+        </div>
         <form action="/add-vehicle" method="POST">
             <!-- Brand -->
             <div class="mb-3">
