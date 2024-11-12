@@ -29,15 +29,36 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>List of Vehicles</h1>
             <!-- Add New Vehicle Button -->
-            <a href="/add-vehicle" class="btn btn-primary">Add New Vehicle</a>
+            <a href="{{ route('vehicle.create') }}" class="btn btn-primary">Add New Vehicle</a>
         </div>
 
-        <!-- Success Message -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        <!-- Success/Error Messages -->
+@if (session('success'))
+    <div class="alert alert-success" id="alert-message">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger" id="alert-message">
+        {{ session('error') }}
+    </div>
+@endif
+
+<script>
+    // Automatically fade out the alert message after 5 seconds
+    document.addEventListener('DOMContentLoaded', function () {
+        const alertMessage = document.getElementById('alert-message');
+        if (alertMessage) {
+            setTimeout(() => {
+                alertMessage.style.transition = 'opacity 0.5s';
+                alertMessage.style.opacity = '0';
+                setTimeout(() => alertMessage.remove(), 500); // Fully remove it after fading out
+            }, 5000);
+        }
+    });
+</script>
+
 
         <table class="table table-bordered">
             <thead class="table-dark">
@@ -54,6 +75,7 @@
                     <th>Status</th>
                     <th>Price/Day</th>
                     <th>Description</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,6 +93,11 @@
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->price_per_day }}</td>
                         <td>{{ $data->description }}</td>
+                        <td>
+                            <!-- Delete Button -->
+                             <a href="{{ route('vehicle.destroy', $data->id) }}"class="btn btn-danger btn-sm">Delete</a>
+                            
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

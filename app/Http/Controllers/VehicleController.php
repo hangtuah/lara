@@ -39,4 +39,21 @@ class VehicleController extends Controller
 
         return redirect()->route('vehicle.index')->with('success', 'Vehicle added successfully!');
     }
+
+    public function destroy($id)
+    {
+        // Find the vehicle by its ID
+        $vehicle = Vehicle::find($id);
+
+        if (!$vehicle) {
+            // Redirect back with an error message if vehicle not found
+            return redirect()->route('vehicle.index')->with('error', 'Vehicle not found!');
+        }
+
+        // Delete the vehicle
+        $vehicle->delete();
+
+        // Redirect back with a success message
+        return redirect()->route('vehicle.index')->with('success', 'Vehicle deleted successfully!');
+    }
 }
