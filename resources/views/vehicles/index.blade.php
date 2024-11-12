@@ -29,8 +29,16 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>List of Vehicles</h1>
             <!-- Add New Vehicle Button -->
-            <a href="{{ route('vehicle.create') }}" class="btn btn-primary">Add New Vehicle</a>
+            <a href="/add-vehicle" class="btn btn-primary">Add New Vehicle</a>
         </div>
+
+        <!-- Success Message -->
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
