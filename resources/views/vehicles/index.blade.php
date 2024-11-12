@@ -26,7 +26,11 @@
 
     <!-- Main Content -->
     <div class="container my-5">
-        <h1 class="mb-4">List of Vehicles</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>List of Vehicles</h1>
+            <!-- Add New Vehicle Button -->
+            <a href="/add-vehicle" class="btn btn-primary">Add New Vehicle</a>
+        </div>
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -47,18 +51,18 @@
             <tbody>
                 @foreach($vcls as $data)
                     <tr>
-                        <td></td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->brand }}</td>
                         <td>{{ $data->model }}</td>
                         <td>{{ $data->type }}</td>
                         <td>{{ $data->year }}</td>
                         <td>{{ $data->license_plate }}</td>
-                        <td>{{ $data->engine_capacity  }}</td>
-                        <td>{{ $data->fuel_type  }}</td>
-                        <td>{{ $data->seat_capacity  }}</td>
+                        <td>{{ $data->engine_capacity }}</td>
+                        <td>{{ $data->fuel_type }}</td>
+                        <td>{{ $data->seat_capacity }}</td>
                         <td>{{ $data->status }}</td>
-                        <td>{{ $data->price_per_day  }}</td>
-                        <td>{{ $data->description  }}</td>
+                        <td>{{ $data->price_per_day }}</td>
+                        <td>{{ $data->description }}</td>
                     </tr>
                 @endforeach
             </tbody>
