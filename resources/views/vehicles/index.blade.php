@@ -83,7 +83,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->brand }}</td>
-                        <td>{{ $data->model }}</td>
+                        <td> <a href="{{ route('vehicle.edit', $data->id) }}">{{ $data->model }}</a></td>
                         <td>{{ $data->type }}</td>
                         <td>{{ $data->year }}</td>
                         <td>{{ $data->license_plate }}</td>
